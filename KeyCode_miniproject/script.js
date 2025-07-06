@@ -9,6 +9,10 @@ function createDiv(cls, text, fnc){
     const small = document.createElement('small');
     small.textContent = fnc;
     div.className = cls;
+    // text === ' ' ? 'Space' : text;
+    if(text === ' '){
+        text = 'Space'
+    }
     div.textContent = text;
     div.appendChild(small);
     return div;
