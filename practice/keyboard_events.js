@@ -1,0 +1,1 @@
+const clrButton = document.querySelector('#clear');
