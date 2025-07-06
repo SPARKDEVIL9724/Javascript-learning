@@ -15,9 +15,9 @@ function createDiv(cls, text, fnc){
 }
 function displayKeyCode(e){
     clearAll();
-    parentDiv.appendChild(createDiv('key', e.key, 'e.key'));
-    parentDiv.appendChild(createDiv('key', e.keyCode, 'e.keyCode'));
-    parentDiv.appendChild(createDiv('key', e.code, 'e.code'));
+    parentDiv.appendChild(createDiv('key', e.key, 'pressedKey.key'));
+    parentDiv.appendChild(createDiv('key', e.keyCode, 'pressedKey.keyCode'));
+    parentDiv.appendChild(createDiv('key', e.code, 'pressedKey.code'));
 }
 const body = document.body;
 body.addEventListener('keypress', displayKeyCode);
