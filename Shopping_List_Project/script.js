@@ -25,11 +25,13 @@ function createListItem(item){
     li.appendChild(button);
     itemList.appendChild(li);
 }
+
 // clear All
 function clearAll(){
     const li = document.querySelectorAll('li');
     li.forEach((item) => itemList.removeChild(item));
 }
+
 // add item
 function addItem(e){
     e.preventDefault();
@@ -38,10 +40,60 @@ function addItem(e){
     createListItem(item);
     document.getElementById('item-input').value = '';
 }
+
 // remove list item
 function removeListItem(e){
     const item = e.target.parentElement.parentElement;
     itemList.removeChild(item);
+}
+
+//filter item
+function onFilter(e){
+    const li = document.querySelectorAll('li');
+    li.forEach((item) => {
+        if(item.textContent.includes(e.target.value) && e.target.value !== ''){
+            item.style.color = 'green';
+            item.style.border = 'green solid 2px';
+        }
+        else{
+            item.style.color = 'black';
+            item.style.border = '#ccc 1px solid';
+        }
+    });
+}
+
+//dynamic list item styling
+function onMouseOver(){
+    document.querySelectorAll('li').forEach((item) => {
+        item.addEventListener('mouseover',() => {
+        item.style.color = 'blue';
+        item.style.backgroundColor = '#eee';
+        });
+    });
+    
+    document.querySelectorAll('li').forEach((item) =>{
+
+        item.querySelector('button i').addEventListener(
+            'mouseover', () => {
+                item.style.border = 'red 2px solid';
+        });
+        item.querySelector('button i').addEventListener(
+        'click', removeListItem
+        );
+    });
+}
+
+function onMouseOut(){
+    document.querySelectorAll('li').forEach((item) => {
+        item.addEventListener('mouseout',() => {
+            item.style.color = 'black';
+            item.style.backgroundColor = '#f5f5f5';
+        });
+        item.querySelector('button i').addEventListener(
+            'mouseout', () => {
+            item.style.border = '#ccc 1px solid';
+        });
+    });
 }
 
 //add item button
@@ -54,6 +106,14 @@ addItemButton.appendChild(document.createTextNode(' Add Item'));
 formCtrl.appendChild(addItemButton);
 form.insertAdjacentElement('beforeend', formCtrl);
 
+// app-header 
+const appHeader = document.createElement('header');
+const heading = document.createElement('h1');
+heading.id = 'app-title';
+heading.textContent = 'Shopping List';
+appHeader.appendChild(heading);
+divContainer.insertAdjacentElement('afterbegin', appHeader);
+
 // clear all button
 const clrButton = createButton("btn-clear");
 clrButton.id = 'clear';
@@ -65,31 +125,10 @@ document.querySelector('.btn').addEventListener('click', addItem);
 
 clrButton.addEventListener('click', clearAll);
 
-document.querySelectorAll('li').forEach((item) =>
-    item.querySelector('button i').addEventListener(
-        'mouseover', () => {
-            item.style.border = 'red 1px solid';
-}));
-document.querySelectorAll('li').forEach((item) =>
-    item.querySelector('button i').addEventListener(
-        'mouseout', () => {
-            item.style.border = '#ccc 1px solid';
-}));
 
-document.querySelectorAll('li').forEach((item) =>
-    item.querySelector('button i').addEventListener(
-        'click', removeListItem
-));
+itemList.addEventListener('mouseover', onMouseOver);
 
-document.querySelectorAll('li').forEach((item) => {
-    item.addEventListener('mouseover',() => {
-        item.style.color = 'green';
-        item.style.backgroundColor = '#eee';
-    });
-});
-document.querySelectorAll('li').forEach((item) => {
-    item.addEventListener('mouseout',() => {
-        item.style.color = 'black';
-        item.style.backgroundColor = '#f5f5f5';
-    });
-});
+itemList.addEventListener('mouseout', onMouseOut);
+
+const itemFilter = document.querySelector('.filter input');
+itemFilter.addEventListener('input' , onFilter);
