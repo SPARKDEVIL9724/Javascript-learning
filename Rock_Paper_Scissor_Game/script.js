@@ -1,5 +1,5 @@
 const divContainer = document.querySelector('.container');
-let userScore = 10;
+let userScore = 0;
 let computerScore = 0;
 // create button
 function createOptions(option){
@@ -18,24 +18,40 @@ function computerChoice(){
 
 // check user choice
 function checkChoice(e){
-    const choice = e.target.value;
-    const computerChoice = computerChoice();
-    let result = 'Pokemon';
-    if (computerChoice === choice){
+    const choice = e.target.innerText;
+    const compChoice = computerChoice();
+    let result = '';
+    if (compChoice === choice){
         result = 'Draw';
     }
     else if (choice === 'Rock'){
-        result = computerChoice === 'Paper' ? 'Loss' : 'Win';
+        result = compChoice === 'Paper' ? 'Loss' : 'Win';
     }
     else if (choice === 'Scissor'){
-        result = computerChoice === 'Rock' ? 'Loss' : 'Win';
+        result = compChoice === 'Rock' ? 'Loss' : 'Win';
     }
     else {
-        result = computerChoice === 'Scissor' ? 'Loss' : 'Win';
+        result = compChoice === 'Scissor' ? 'Loss' : 'Win';
     }
     return result;
 }
 
+// display score
+function displayScore(result){
+    const divScore = document.querySelector('.score');
+    while(divScore.firstElementChild){
+        divScore.removeChild(divScore.firstChild);
+    };
+    const displayUserScore = document.createElement('h2');
+    const displayComputerScore = document.createElement('h2');
+    const res = document.createElement('h3');
+    res.textContent = result;
+    displayUserScore.textContent = `Your Score: ${userScore}`;
+    displayComputerScore.textContent = `Computer Score: ${computerScore}`;
+    divScore.appendChild(displayUserScore);
+    divScore.appendChild(displayComputerScore);
+    divScore.appendChild(res);
+}
 // refresh Game
 function refreshGame(){
     userScore = 0;
@@ -49,16 +65,7 @@ appHeading.textContent = 'Rock Paper Scissor Game';
 header.appendChild(appHeading);
 divContainer.insertAdjacentElement('afterbegin',header);
 
-// display score
-const score = document.createElement('div');
-score.className = 'score';
-divContainer.appendChild(score);
-const displayUserScore = document.createElement('h2');
-const displayComputerScore = document.createElement('h2');
-displayUserScore.textContent = `Your Score: ${userScore}`;
-displayComputerScore.textContent = `Computer Score: ${computerScore}`;
-score.appendChild(displayUserScore);
-score.appendChild(displayComputerScore);
+
 
 // createing option buttons
 const choices = ['Rock', 'Scissor', 'Paper'];
@@ -75,6 +82,7 @@ divContainer.insertAdjacentElement('beforeend', refreshButton);
 refreshButton.addEventListener('click', () => {
     userScore = 0;
     computerScore = 0;
+    displayScore("Game Restarted");
 });
 
 const options = document.querySelectorAll('.option-btn');
@@ -86,14 +94,14 @@ options.forEach((option) => {
         option.style.border = '1px solid #ccc';
     });
     option.addEventListener('click', (e) =>{
-        const result = document.createElement('h3');
-        result.textContent = checkChoice(e);
-        if (result.textContent === 'Win'){
+        const result = checkChoice(e);
+        console.log(result);
+        if (result === 'Win'){
             userScore += 1;
         }
-        else if(result.textContent === 'Loss'){
+        else if(result === 'Loss'){
             computerScore += 1;
         }
-        score.appendChild(result);
+        displayScore(result);
     });
 });
