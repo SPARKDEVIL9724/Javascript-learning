@@ -37,7 +37,7 @@ function checkWinner(e){
         if(val1 !== '' && val2 !== '' && val3 !== ''){
             if (val1 === val2 && val1 === val3){
                 const winner = document.createElement('h2');
-                winner.textContent = `${e.target.innerText} is Winner`;
+                winner.textContent = `Congratulations ${e.target.innerText} is Winner`;
                 document.querySelector('h1').insertAdjacentElement('afterend', winner);
                 boxes.forEach((box) => box.disabled = true);
             }
