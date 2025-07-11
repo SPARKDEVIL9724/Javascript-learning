@@ -24,7 +24,7 @@ h2 {
   margin-left: 10px;
   margin-top: 30px;
   margin-bottom: 0px;
-  font-size: 10vmin;
+  font-size: 6vmin;
 }
 
 .container {
@@ -63,48 +63,4 @@ h2 {
   color: #fff;
   border-radius: 1rem;
   border: none;
-}
-
-#new-btn {
-  padding: 1rem;
-  font-size: 1.25rem;
-  background-color: #191913;
-  color: #fff;
-  border-radius: 1rem;
-  border: none;
-}
-
-#msg {
-  color: #ffffc7;
-  font-size: 5vmin;
-}
-
-.msg-container {
-  height: 100vmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.hide {
-  display: none;
-}
-
-/* refresh button */
-.btn-refresh {
-  margin-top: 20px;
-  width: 100%;
-  font-size: 16px;
-  background-color: transparent;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.btn-refresh:hover {
-  background-color: #f1f1f1;
 }
