@@ -23,6 +23,7 @@ function gameReset(){
     if(winner){
         document.body.querySelector('main').removeChild(winner);
     }
+    turnO = true;
 }
 
 // check winner
@@ -38,6 +39,7 @@ function checkWinner(e){
                 const winner = document.createElement('h2');
                 winner.textContent = `${e.target.innerText} is Winner`;
                 document.querySelector('h1').insertAdjacentElement('afterend', winner);
+                boxes.forEach((box) => box.disabled = true);
             }
         }
     });
