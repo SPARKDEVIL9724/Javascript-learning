@@ -32,6 +32,8 @@ function createListItem(item){
 function clearAll(){
     const li = document.querySelectorAll('li');
     li.forEach((item) => itemList.removeChild(item));
+    itemListStored = [];
+    localStorage.setItem('items', itemListStored);
 }
 
 // add item
@@ -47,17 +49,16 @@ function addItem(e){
 // remove list item
 function removeListItem(e){
     const item = e.target.parentElement.parentElement;
-    localStorage.setItem('itemre', item.innerText);
-    const index = itemListStored.indexOf(item.innerText);
     itemList.removeChild(item);
-    console.log(itemListStored);
-    const x = [];//,(itemListStored.slice(index+1, itemListStored.length))];
+    itemListStored = localStorage.getItem('items').split(',');
+    const x = [];
     itemListStored.forEach(i => {
         if(i !== item.innerText){
             x.push(i);
         }
     });
-    localStorage.setItem('item', x);
+    itemListStored = x;
+    localStorage.setItem('items', itemListStored);
 }
 
 //filter item
@@ -138,6 +139,7 @@ divContainer.insertAdjacentElement('beforeend', clrButton);
 itemListStored = localStorage.getItem('items');
 if(localStorage.getItem('items') && itemListStored.length > 0){
     itemListStored = localStorage.getItem('items').split(',');
+    console.log(itemListStored);
     itemListStored.forEach(item => {
         createListItem(item);
     });
