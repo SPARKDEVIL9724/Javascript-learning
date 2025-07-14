@@ -1,3 +1,4 @@
+let itemListStored = [];
 const divContainer = document.querySelector('.container');
 const itemList = document.getElementById('item-list');
 const form = document.getElementById('item-form');
@@ -16,6 +17,7 @@ function createButton(cls){
 
 // create list items
 function createListItem(item){
+    itemListStored.push(item);  
     const li = document.createElement('li');
     li.className = 'items';
     li.textContent = item;
@@ -39,12 +41,23 @@ function addItem(e){
     const item = formData.get('item');
     createListItem(item);
     document.getElementById('item-input').value = '';
+    // localStorage.setItem('items', itemListStored);
 }
 
 // remove list item
 function removeListItem(e){
     const item = e.target.parentElement.parentElement;
+    localStorage.setItem('itemre', item.innerText);
+    const index = itemListStored.indexOf(item.innerText);
     itemList.removeChild(item);
+    console.log(itemListStored);
+    const x = [];//,(itemListStored.slice(index+1, itemListStored.length))];
+    itemListStored.forEach(i => {
+        if(i !== item.innerText){
+            x.push(i);
+        }
+    });
+    localStorage.setItem('item', x);
 }
 
 //filter item
@@ -96,6 +109,7 @@ function onMouseOut(){
     });
 }
 
+
 //add item button
 const formCtrl = document.createElement('div');
 formCtrl.className = 'form-control';
@@ -120,8 +134,23 @@ clrButton.id = 'clear';
 clrButton.textContent = 'Clear All';
 divContainer.insertAdjacentElement('beforeend', clrButton);
 
+// restoring items form localstorage
+itemListStored = localStorage.getItem('items');
+if(localStorage.getItem('items') && itemListStored.length > 0){
+    itemListStored = localStorage.getItem('items').split(',');
+    itemListStored.forEach(item => {
+        createListItem(item);
+    });
+} 
+else{
+    itemListStored = [];
+}
+
 // events 
-document.querySelector('.btn').addEventListener('click', addItem);
+document.querySelector('.btn').addEventListener('click', (e) => {
+    addItem(e);
+    localStorage.setItem('items', itemListStored);
+});
 
 clrButton.addEventListener('click', clearAll);
 
