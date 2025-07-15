@@ -65,6 +65,7 @@ function removeTask(e){
 // checking checkbox checked
 function checked(e){
     const task = e.target.parentElement;
+    task.style.border = '1px solid black';
     if(e.target.checked){
         task.style.textDecoration = 'line-through';
         task.style.border = '#31c12c solid 1px';
@@ -79,7 +80,7 @@ function checked(e){
 function onMouseOver(){
     document.querySelectorAll('li').forEach((task) => {
         task.addEventListener('mouseover',() => {
-        task.style.color = 'aquamarine';
+        task.style.color = 'blue';
         task.style.backgroundColor = '#eeeeeea3';
         });
     });
@@ -87,12 +88,19 @@ function onMouseOver(){
     document.querySelectorAll('li').forEach((task) =>{
         task.querySelector('button i').addEventListener(
             'mouseover', () => {
-                if(!task.style.border === '#31c12c solid 1px'){
+                if(task.style.border === '#31c12c solid 1px'){
+                    task.style.border = '#31c12c solid 1px';
+                }else{
                     task.style.border = 'red 1px solid';
+
                 }
             });
         task.querySelector('button i').addEventListener(
-                'click', removeListItem
+                'click', removeTask
+        );
+
+        task.querySelector('input').addEventListener(
+            'click' ,checked
         );
     });
 }
@@ -105,7 +113,9 @@ function onMouseOut(){
         });
         task.querySelector('button i').addEventListener(
            'mouseout', () => {
-            if(!task.style.border === '#31c12c solid 1px'){
+            if(task.style.border === '#31c12c solid 1px'){
+                task.style.border = '#31c12c solid 1px';
+            }else{
                 task.style.border = '#ccc 1px solid';
             }
         });
@@ -137,4 +147,10 @@ clrButton.textContent = 'Clear All Tasks';
 divContainer.insertAdjacentElement('beforeend', clrButton);
 
 // events
-createTask('Pikachu');
+
+addItemButton.addEventListener('click', addTask);
+
+clrButton.addEventListener('click', clearAllTasks);
+
+taskList.addEventListener('mouseover', onMouseOver);
+taskList.addEventListener('mouseout', onMouseOut);
