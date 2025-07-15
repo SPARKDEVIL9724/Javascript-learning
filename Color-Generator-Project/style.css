@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(223, 220, 220);
+    align-items: center;
+    text-align: center;
+}
+
+.random-color-display{
+    width: 60%;
+    height: 50%;
+    background-color: rgb(255,255,255);
+    color: rgb(255,255,255);
+}
