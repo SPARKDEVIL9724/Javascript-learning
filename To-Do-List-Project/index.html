@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <form id="task">
+        <div class="form-control">
+          <input
+            type="text"
+            class="form-input"
+            id="task-input"
+            name="task"
+            placeholder="Enter Task"
+          />
+        </div>
+      </form>
+
+      <ul id="task-list" class="tasks">
+        <li class="tasks">
+            <input type="checkbox" class="task-checkbox" />
+            Pokemon
+            <button class="remove-item btn-link text-red">
+                <i class="fa-xmark"></i>
+            </button>
+        </li>
+      </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
