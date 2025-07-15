@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-      <form id="task">
+      <form id="task-form">
         <div class="form-control">
           <input
             type="text"
@@ -20,12 +27,12 @@
         </div>
       </form>
 
-      <ul id="task-list" class="tasks">
+      <ul id="tasks-list" class="tasks">
         <li class="tasks">
-            <input type="checkbox" class="task-checkbox" />
+            <input type="checkbox" class="task-checkbox" name="checkbox"/>
             Pokemon
-            <button class="remove-item btn-link text-red">
-                <i class="fa-xmark"></i>
+            <button class="remove-task btn-link text-red">
+                <i class="fa-solid fa-xmark" ></i>
             </button>
         </li>
       </ul>
