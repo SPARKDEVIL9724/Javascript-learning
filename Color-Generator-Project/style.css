@@ -1,12 +1,78 @@
-body{
-    background-color: rgb(223, 220, 220);
-    align-items: center;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f5f5f5;
+}
+.container {
+  max-width: 600px;
+  height:300px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+header {
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+    font-weight: 300;
+    margin-left: 10px;
 }
 
 .random-color-display{
-    width: 60%;
-    height: 50%;
+    margin-bottom: 25px;
+    margin-left: 5%;
+    width: 90%;
+    height: 90%;
     background-color: rgb(255,255,255);
-    color: rgb(255,255,255);
+}
+
+.generate-color {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.generate-color:hover {
+    background-color: #444;
+}
+
+.display-value{
+    margin-top: 40px;
+    margin-bottom: 25px;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.value{
+    width: 40%;
+    border: 1px solid #ccc;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 0 5px 20px;
+    font-weight: 700;
+}
+
+.hide{
+    display: none;
 }
