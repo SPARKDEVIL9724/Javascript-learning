@@ -1,5 +1,6 @@
+let storedTasks = [];
+let checkedTasks =[];
 const taskList = document.querySelector('.tasks');
-const task = document.querySelector('.form-input');
 const divContainer = document.querySelector('.container');
 const form = document.getElementById('task-form');
 
@@ -45,6 +46,7 @@ function createTask(task){
 function clearAllTasks(){
     const tasks = document.querySelectorAll('li');
     tasks.forEach((li) => taskList.removeChild(li) );
+    localStorage.setItem('tasks',[]);
 }
 
 // add task
@@ -53,6 +55,8 @@ function addTask(e){
     const formData = new FormData(form);
     const task = formData.get('task');
     createTask(task);
+    storedTasks.push(task);
+    localStorage.setItem('tasks', storedTasks);
     document.getElementById('task-input').value = '';
 }
 
@@ -60,6 +64,23 @@ function addTask(e){
 function removeTask(e){
     const task = e.target.parentElement.parentElement;
     taskList.removeChild(task);
+    const x = [];
+    storedTasks.forEach((t) => {
+        if(t !== task.innerText){
+            x.push(t);
+        }
+    });
+    storedTasks = x;
+    localStorage.setItem('tasks', storedTasks);
+    const y = [];
+    checkedTasks.forEach((t) => {
+        if(t !== task.innerText){
+            y.push(t);
+        }
+    });
+    checkedTasks = y;
+    localStorage.setItem('checkedTasks', checkedTasks);
+    
 }
 
 // checking checkbox checked
@@ -69,18 +90,34 @@ function checked(e){
     if(e.target.checked){
         task.style.textDecoration = 'line-through';
         task.style.border = '#31c12c solid 1px';
+        task.style.color = 'grey';
+        checkedTasks.push(task.innerText);
     }
     else{
         task.style.textDecoration = 'none';
         task.style.border = '#ccc solid 1px';
+        task.style.color = 'black';
+        const x = [];
+        checkedTasks.forEach((t) => {
+            if(t !== task.innerText){
+                x.push(t);
+            }
+        });
+        checkedTasks = x;
     }
+    localStorage.setItem('checkedTasks', checkedTasks);
 }
 
 //dynamic list item styling
 function onMouseOver(){
     document.querySelectorAll('li').forEach((task) => {
         task.addEventListener('mouseover',() => {
-        task.style.color = 'blue';
+            if(task.querySelector('input').checked){
+                task.style.color = 'grey';
+            }
+            else{
+                task.style.color = 'blue';
+            }
         task.style.backgroundColor = '#eeeeeea3';
         });
     });
@@ -122,6 +159,29 @@ function onMouseOut(){
     });
 }
 
+// restoring stored tasks
+function restoreTask(){
+    const tasks = localStorage.getItem('tasks');
+    const chk = localStorage.getItem('checkedTasks');
+    const x = [];
+    if(tasks.length > 0 && localStorage.getItem('tasks')){
+        storedTasks = tasks.split(',');
+        if(chk){
+        checkedTasks = chk.split(',');
+        }
+        storedTasks.forEach((task) => {
+            if(!checkedTasks.includes(task)){
+                createTask(task);
+                x.push(task);
+            }
+        });
+    }
+    storedTasks = x;
+    checkedTasks = [];
+    localStorage.setItem('tasks',storedTasks);
+    localStorage.setItem('checkedTasks',checkedTasks);
+}
+
 // creating app-header 
 const appHeader = document.createElement('header');
 const heading = document.createElement('h1');
@@ -147,7 +207,8 @@ clrButton.textContent = 'Clear All Tasks';
 divContainer.insertAdjacentElement('beforeend', clrButton);
 
 // events
-
+// restoreTask();
+window.addEventListener('load', restoreTask);
 addItemButton.addEventListener('click', addTask);
 
 clrButton.addEventListener('click', clearAllTasks);
