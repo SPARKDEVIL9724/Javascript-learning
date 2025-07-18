@@ -9,10 +9,11 @@
 <body>
     <h1>Digital Clock</h1>
     <div class="container">    
-        <span style="padding-left: 9.9%;">Hour</span>
-        <span style="padding-left: 6.5%;">Minute</span>
-        <span style="padding-left: 4%;">Second</span>
-        <br>
+        <div class="clock-label">
+        <span>Hour</span>
+        <span>Minute</span>
+        <span>Second</span>
+        </div>
         <div class="digital-clock">
             <div class="clock-hour"></div>
             <div class="clock-minute"></div>
@@ -21,25 +22,42 @@
     </div>
 
     <h1>StopWatch</h1>
-    <div class="stopwatch digital-clock">
-        <div class="hour">00</div>
-        <div class="minute">00</div>
-        <div class="second">00</div>
-        <div class="milisecond">00</div>
+    <div class="stopwatch">
+        <div class="clock-label">
+            <span>Hour</span>
+            <span>Minute</span>
+            <span>Second</span>
+            <span>Millisecond</span>
+        </div>
+        <div class="digital-clock">
+            <div class="hour">00</div>
+            <div class="minute">00</div>
+            <div class="second">00</div>
+            <div class="milisecond" style="width: 20%;">00</div>
+        </div>
+        <button class="reset-stopwatch hide">Reset</button>
+        <button class="start-stopwatch">Start</button>
+        <button class="stop-stopwatch hide">Stop</button>
     </div>
-    <button class="reset-stopwatch hide">Resume</button>
-    <button class="start-stopwatch">Start</button>
-    <button class="stop-stopwatch hide">Stop</button>
 
     <h1>Timer</h1>
-    <div class="timer digital-clock">
+    <div class="timer">
+        <div class="clock-label">
+        <span>Hour</span>
+        <span>Minute</span>
+        <span>Second</span>
+    </div>
+    <div class="digital-clock">
         <input class="timer-hour" placeholder="00"/>
         <input class="timer-minute" placeholder="00"/>
         <input class="timer-second" placeholder="00"/>
     </div>
-    <button class="pause-timer hide">Pause</button>
-    <button class="start-timer">Start</button>
-    <button class="delete-timer hide">Delete</button>
+    <div class="button-group">
+        <button class="pause-timer hide">Pause</button>
+        <button class="start-timer">Start</button>
+        <button class="delete-timer hide">Delete</button>
+    </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
