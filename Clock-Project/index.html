@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div class="container">    
+        <span style="padding-left: 9.9%;">Hour</span>
+        <span style="padding-left: 6.5%;">Minute</span>
+        <span style="padding-left: 4%;">Second</span>
+        <br>
+        <div class="digital-clock">
+            <div class="clock-hour"></div>
+            <div class="clock-minute"></div>
+            <div class="clock-second"></div>
+        </div>
+    </div>
+
+    <h1>StopWatch</h1>
+    <div class="stopwatch digital-clock">
+        <div class="hour">00</div>
+        <div class="minute">00</div>
+        <div class="second">00</div>
+        <div class="milisecond">00</div>
+    </div>
+    <button class="reset-stopwatch hide">Resume</button>
+    <button class="start-stopwatch">Start</button>
+    <button class="stop-stopwatch hide">Stop</button>
+
+    <h1>Timer</h1>
+    <div class="timer digital-clock">
+        <input class="timer-hour" placeholder="00"/>
+        <input class="timer-minute" placeholder="00"/>
+        <input class="timer-second" placeholder="00"/>
+    </div>
+    <button class="pause-timer hide">Pause</button>
+    <button class="start-timer">Start</button>
+    <button class="delete-timer hide">Delete</button>
+    <script src="script.js"></script>
+</body>
+</html>
