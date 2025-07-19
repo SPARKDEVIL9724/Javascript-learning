@@ -1,7 +1,7 @@
 body {
-    background-color: #1e1e2f; /* Dark background */
+    background-color: #1e1e2f; 
     font-family: 'Arial', sans-serif;
-    color: #f0f0f0; /* Light text color */
+    color: #f0f0f0; 
     margin: 0;
     padding: 0;
 }
@@ -10,7 +10,7 @@ body {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #2a2a3c; /* Darker container background */
+    background-color: #2a2a3c; 
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
@@ -21,7 +21,7 @@ header {
 }
 
 h1 {
-    color: #ffab40; /* Orange color for the title */
+    color: #ffab40; 
     font-size: 2.5rem;
     margin: 0;
 }
@@ -38,15 +38,15 @@ h1 {
     font-size: 2rem;
     border: none;
     border-radius: 10px;
-    background-color: #3a3a4e; /* Input background */
-    color: #ffab40; /* Orange text color */
+    background-color: #3a3a4e; 
+    color: #ffab40; 
     text-align: right;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .calculator-input:focus {
     outline: none;
-    box-shadow: 0 0 5px #ffab40; /* Focus effect */
+    box-shadow: 0 0 5px #ffab40; 
 }
 
 .buttons {
@@ -56,19 +56,20 @@ h1 {
 }
 
 button {
+    width: 100%;
     padding: 20px;
     font-size: 1.5rem;
     border: none;
     border-radius: 10px;
-    background-color: #ffab40; /* Orange button background */
-    color: #1e1e2f; /* Dark background for text */
+    background-color: #ffab40; 
+    color: #1e1e2f; 
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background-color: #ff8c00; /* Darker orange on hover */
+    background-color: #ff8c00; 
     transform: translateY(-2px);
 }
 
@@ -78,33 +79,43 @@ button:active {
 }
 
 /* Special styles for specific buttons */
-button:nth-child(12), /* BackSpace */
+button:nth-child(8), /* BackSpace */
 button:nth-child(13), /* + */
-button:nth-child(14), /* - */
-button:nth-child(15) { /* * */
-    background-color: #007bff; /* Blue for operation buttons */
+button:nth-child(17), /* - */
+button:nth-child(18), /* * */
+button:nth-child(19) { /* / */
+    background-color: #007bff; 
     color: white;
 }
 
-button:nth-child(12):hover,
+button:nth-child(8):hover,
 button:nth-child(13):hover,
-button:nth-child(14):hover,
-button:nth-child(15):hover {
-    background-color: #0056b3; /* Darker blue on hover */
+button:nth-child(17):hover,
+button:nth-child(18):hover,
+button:nth-child(19):hover {
+    background-color: #0056b3; 
 }
 
-button:nth-child(16) { /* = */
-    background-color: #28a745; /* Green for equals button */
+button:nth-child(12) { /* = */
+    background-color: #28a745; 
 }
 
-button:nth-child(16):hover {
-    background-color: #218838; /* Darker green on hover */
+button:nth-child(12):hover {
+    background-color: #218838; 
 }
 
-button:nth-child(17) { /* C */
-    background-color: #dc3545; /* Red for clear button */
+button:nth-child(4) { /* Clear */
+    background-color: #dc3545; 
+    color: white;
 }
 
-button:nth-child(17):hover {
-    background-color: #c82333; /* Darker red on hover */
+button:nth-child(4):hover {
+    background-color: #c82333; 
+}
+
+button:nth-child(16){
+    color: #2a2a3c;
+    background-color: #2a2a3c;
+    box-shadow: none;
+    cursor: default;
 }
