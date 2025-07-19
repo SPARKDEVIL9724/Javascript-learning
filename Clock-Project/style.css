@@ -77,11 +77,6 @@ h1 {
     box-shadow: 0 8px 20px rgba(122, 74, 203, 0.4);
 }
 
-/* .stopwatch .digital-clock div:last-child {
-    width: 28%;
-    font-size: 2.5rem;
-} */
-
 .button-group {
     display: flex;
     justify-content: center;
